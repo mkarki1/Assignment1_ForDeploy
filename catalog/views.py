@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views import generic
 # Create your views here.
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 from catalog.models import Book, Author, BookInstance, Genre
 
 
@@ -46,9 +46,6 @@ class BookDetailView(generic.DetailView):
     paginate_by = 10
 
 
-from django.contrib.auth.mixins import LoginRequiredMixin
-
-
 class LoanedBooksByUserListView(LoginRequiredMixin, generic.ListView):
     """Generic class-based view listing books on loan to current user."""
     model = BookInstance
@@ -65,3 +62,5 @@ class AuthorListView(generic.ListView):
 
 class AuthorDetailView(generic.DetailView):
     model = Author
+
+

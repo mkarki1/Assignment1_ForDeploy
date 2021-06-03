@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
+from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 from django.contrib.auth import views as auth_views
-from django.conf.urls import url
 urlpatterns =[
     path('', views.index, name='index'),
     path('books/', views.BookListView.as_view(), name='books'),

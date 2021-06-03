@@ -25,8 +25,4 @@
     {% endfor %}
   </div>
 {% endblock %}
-from django.shortcuts import get_object_or_404
 
-def book_detail_view(request, primary_key):
-    book = get_object_or_404(Book, pk=primary_key)
-    return render(request, 'catalog/book_detail.html', context={'book': book})
