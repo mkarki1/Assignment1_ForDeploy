@@ -13,7 +13,6 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
@@ -25,10 +24,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('catalog/', include('catalog.urls')),
     path('', RedirectView.as_view(url='catalog/')),
- #   path('<int:post_id>/share/', views.post_share, name= 'post_share')
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
 
 urlpatterns += [
     path('catalog/', include('catalog.urls')),
 ]
-
+urlpatterns += [
+    path('accounts/', include('django.contrib.auth.urls')),
+]
